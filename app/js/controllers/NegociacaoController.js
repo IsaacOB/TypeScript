@@ -2,15 +2,15 @@ class NegociacaoController {
     constructor() {
         this.negociacoes = new Negociacoes();
         this.negociacoesView = new NegociacoesView('#negociacoesView');
-        this.inputData = document.querySelector('#data');
-        this.inputQuantidade = document.querySelector('#quantidade');
-        this.inputValor = document.querySelector('#valor');
+        this.inputData = $('#data');
+        this.inputQuantidade = $('#quantidade');
+        this.inputValor = $('#valor');
         this.negociacoesView.update(this.negociacoes);
     }
     adiciona(event) {
         event.preventDefault();
         const negociacao = new Negociacao(//Tudo que tem hifen vai ser trocado por virgula
-        new Date(this.inputData.value.replace(/-/g, ',')), parseInt(this.inputQuantidade.value), parseFloat(this.inputValor.value));
+        new Date(this.inputData.val().replace(/-/g, ',')), parseInt(this.inputQuantidade.val()), parseFloat(this.inputValor.val()));
         this.negociacoes.adiciona(negociacao);
         this.negociacoesView.update(this.negociacoes);
     }
